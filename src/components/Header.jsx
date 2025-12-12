@@ -1,0 +1,288 @@
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../redux/authSlice";
+import { resetProfile } from "../redux/profileSlice";
+import { toggleTheme } from "../redux/themeSlice";
+
+export default function Header() {
+  const cart = useSelector((s) => s.cart.items);
+  const { user } = useSelector((s) => s.auth);
+  const { dark } = useSelector((s) => s.theme);
+
+  const [showProfile, setShowProfile] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const qty = cart.reduce((a, b) => a + b.qty, 0);
+
+  // Toggle body classes based on theme
+  useEffect(() => {
+    document.body.classList.toggle("bg-gray-900", dark);
+    document.body.classList.toggle("text-white", dark);
+    document.body.classList.toggle("bg-white", !dark);
+    document.body.classList.toggle("text-gray-900", !dark);
+  }, [dark]);
+
+  // Close profile dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest("#profile-dropdown")) setShowProfile(false);
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
+  return (
+    <>
+      {/* Header */}
+      <header
+        className={`sticky top-0 z-50 flex justify-between items-center px-4 py-3 shadow-md transition-colors duration-300 ${
+          dark ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+        }`}
+      >
+        <div className="flex items-center gap-4">
+          <Link
+            to="/"
+            className={`text-3xl font-semibold ${dark ? "text-orange-400" : "text-orange-600"} hover:scale-105 transition-transform`}
+          >
+           FoodWay
+          </Link>
+
+          {/* Desktop location */}
+          <div
+            className={`hidden sm:flex items-center gap-2 px-3 py-1 rounded-full ${
+              dark ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-900"
+            }`}
+          >
+            <svg
+              className="w-5 h-5 text-gray-500"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 1 1 18 0z"></path>
+            </svg>
+            <span className="text-sm">{user?.location || "Set location"}</span>
+            <button
+              onClick={() => navigate("/profile")}
+              className={`text-xs ml-2 ${dark ? "text-orange-400" : "text-orange-600"}`}
+            >
+              Change
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex gap-6 items-center  text-[16px] font-medium">
+          {["Home", "Menu", "About", "Contact"].map((link) => (
+            <Link
+              key={link}
+              to={`/${link.toLowerCase()}`}
+              className="hover:text-orange-400 transition-colors duration-300"
+            >
+              {link}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Right Buttons */}
+        <div className="flex items-center gap-2">
+          {/* Theme toggle */}
+          <button
+            onClick={() => dispatch(toggleTheme())}
+            className={`px-3 py-1 rounded-full transition-all duration-200 ${
+              dark ? "bg-gray-700 hover:bg-gray-600 text-gray-200" : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+            }`}
+          >
+            {dark ? "🌙" : "☀️"}
+          </button>
+
+          {/* Login / Profile */}
+          {!user ? (
+            <button
+              onClick={() => navigate("/auth")}
+              className="hidden sm:block px-3 py-1 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors"
+            >
+              Login / Register
+            </button>
+          ) : (
+            <div id="profile-dropdown" className="relative hidden sm:block">
+              <button
+                onClick={() => setShowProfile((prev) => !prev)}
+                className={`px-3 py-1 rounded-full transition-all duration-200 ${
+                  dark ? "bg-gray-700 hover:bg-gray-600 text-gray-200" : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+                }`}
+              >
+                {user.name || user.email}
+              </button>
+
+              {showProfile && (
+                <div
+                  className={`absolute right-0 mt-2 w-44 rounded-lg shadow-lg border transition-colors duration-300 ${
+                    dark ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
+                  }`}
+                >
+                  <Link
+                    to="/profile"
+                    onClick={() => setShowProfile(false)}
+                    className="block px-4 py-2 hover:bg-orange-100 dark:hover:bg-gray-700"
+                  >
+                    My Profile
+                  </Link>
+                  <button
+                    onClick={() => {
+                      dispatch(logout());
+                      dispatch(resetProfile());
+                      setShowProfile(false);
+                      navigate("/");
+                    }}
+                    className="block w-full text-left px-4 py-2 hover:bg-orange-100 dark:hover:bg-gray-700"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Hamburger */}
+          <button
+            className="sm:hidden px-3 py-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
+            onClick={() => setShowMobileMenu((prev) => !prev)}
+          >
+            ☰
+          </button>
+
+          {/* Cart */}
+          <div className="hidden sm:flex relative">
+            <button
+              onClick={() => navigate("/cart")}
+              className="flex items-center gap-2 px-3 py-2 bg-orange-600 text-white rounded-full hover:bg-orange-700 transition-all"
+            >
+              🛒 Cart
+              {qty > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-xs px-2 py-0.5 rounded-full animate-pulse">
+                  {qty}
+                </span>
+              )}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Menu Drawer */}
+      {showMobileMenu && (
+        <div
+          className="fixed inset-0 z-40 sm:hidden bg-black bg-opacity-40"
+          onClick={() => setShowMobileMenu(false)}
+        >
+          <div
+            className={`fixed top-0 left-0 h-full w-64 p-4 flex flex-col gap-4 shadow-lg transition-transform duration-300 ${
+              dark ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Location */}
+            <div
+              className={`flex items-center gap-2 px-3 py-2 rounded-full ${
+                dark ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-900"
+              }`}
+            >
+              <svg
+                className="w-5 h-5 text-gray-500"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 1 1 18 0z"></path>
+              </svg>
+              <span className="text-sm">{user?.location || "Set location"}</span>
+              <button
+                onClick={() => {
+                  navigate("/profile");
+                  setShowMobileMenu(false);
+                }}
+                className={`text-xs ml-2 ${dark ? "text-orange-400" : "text-orange-600"}`}
+              >
+                Change
+              </button>
+            </div>
+
+            {/* Links */}
+            {["Home", "Menu", "About", "Contact"].map((link) => (
+              <Link
+                key={link}
+                to={`/${link.toLowerCase()}`}
+                onClick={() => setShowMobileMenu(false)}
+                className="px-3 py-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              >
+                {link}
+              </Link>
+            ))}
+
+            {/* Theme Toggle */}
+            <button
+              onClick={() => dispatch(toggleTheme())}
+              className={`px-3 py-1 rounded mt-2 transition-colors duration-300 ${
+                dark ? "bg-gray-700 text-gray-200 hover:bg-gray-600" : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+              }`}
+            >
+              {dark ? "🌙 Dark Mode" : "☀️ Light Mode"}
+            </button>
+
+            {/* Auth Buttons */}
+            {!user ? (
+              <button
+                onClick={() => {
+                  navigate("/auth");
+                  setShowMobileMenu(false);
+                }}
+                className="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+              >
+                Login / Register
+              </button>
+            ) : (
+              <>
+                <Link
+                  to="/profile"
+                  onClick={() => setShowMobileMenu(false)}
+                  className="px-3 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                >
+                  My Profile
+                </Link>
+                <button
+                  onClick={() => {
+                    dispatch(logout());
+                    dispatch(resetProfile());
+                    setShowMobileMenu(false);
+                    navigate("/");
+                  }}
+                  className="px-3 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                >
+                  Logout
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Cart Button */}
+      <div className="sm:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
+        <button
+          onClick={() => navigate("/cart")}
+          className="relative flex items-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all"
+        >
+          🛒 Cart
+          {qty > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full animate-pulse">
+              {qty}
+            </span>
+          )}
+        </button>
+      </div>
+    </>
+  );
+}
