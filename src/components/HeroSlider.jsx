@@ -4,15 +4,14 @@ import { useNavigate } from "react-router-dom";
 const slides = [
     {
         image:
-            "https://www.freepik.com/premium-photo/various-dishes-arabic-cuisine-table-selective-focus_164863047.htm#fromView=search&page=2&position=28&uuid=200feae8-783e-4657-a191-91c0605dc51f&query=food+image+for+slider",
+            "https://media.istockphoto.com/id/817191332/photo/fresh-salad-with-mixed-greens-radish-cucumber-tomato-onion-bell-pepper-basil-mint-and-other.webp?a=1&s=612x612&w=0&k=20&c=wq-dHfVxSn7h2FlqRLZOXU6p_DRK-ObsEOG3LPfzMb4=",
         title: "Eat Smart. Eat Fresh.",
         subtitle: "Pick your dish and enjoy seamless ordering anytime.",
         buttonText: "View Now",
         position: "left",
     },
     {
-        image:
-            "https://www.freepik.com/premium-photo/two-burgers-french-fries-juice-black-background_27166441.htm#fromView=search&page=1&position=6&uuid=2e4e88cc-7764-476b-b79a-3a8714bea811&query=fast+food+image+for+slider",
+        image:"https://media.istockphoto.com/id/1338731121/photo/chicken-biryani-made-with-basmati-rice-and-spices-served-in-mud-pot-combined-with-chicken.jpg?s=612x612&w=0&k=20&c=umZIn8dAMiZ5y5vSD8M2cakCl5Vzcne_XAhq1wTKyNY=",
         title: "Hungry? We’ve Got You!",
         subtitle: "From snacks to full meals — delivered super fast.",
         buttonText: "Order Menu",

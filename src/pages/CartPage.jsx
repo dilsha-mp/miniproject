@@ -38,7 +38,7 @@ export default function CartPage() {
               dark ? "bg-gray-800 text-gray-300" : "bg-white text-gray-600"
             }`}
           >
-            <p className="text-xl">Your cart is empty 😔</p>
+            <p className="text-xl">Your cart is empty</p>
           </div>
         ) : (
           <div className="flex flex-col lg:flex-row gap-8">

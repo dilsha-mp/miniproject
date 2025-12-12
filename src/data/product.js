@@ -1,18 +1,107 @@
 export const products = [
-  { id: 1, name: "Salami Pizza", category: "Pizza", price: 279, image: "https://www.freepik.com/free-photo/salami-pizza-table_7735329.htm#fromView=search&page=1&position=16&uuid=6490395a-467b-41f0-9ecd-88a3aca919e6&query=pizza" },
-  { id: 2, name: "Cheesy Pizza", category: "Pizza", price: 299, image: "https://www.freepik.com/premium-ai-image/photo-cheesy-pizza-being-served-with-fresh-toppings-melting-cheese-golden-crust_406420514.htm#fromView=search&page=1&position=30&uuid=6490395a-467b-41f0-9ecd-88a3aca919e6&query=pizza" },
-  { id: 3, name: "Hamburger Burger", category: "Burger", price: 169, image: "https://www.freepik.com/free-photo/big-sandwich-hamburger-burger-with-beef-red-onion-tomato-fried-bacon_6654487.htm#fromView=search&page=1&position=7&uuid=576b5d0e-46bd-40c5-9f97-e87c81cd4b5d&query=burger" },
-  { id: 4, name: "Triple cheeseburger ", category: "Burger", price: 229, image: "https://www.freepik.com/free-ai-image/triple-cheeseburger-extravaganza_414995565.htm#fromView=search&page=1&position=31&uuid=576b5d0e-46bd-40c5-9f97-e87c81cd4b5d&query=burger" },
-  { id: 5, name: "Vegetable Salad", category: "Salad", price: 199, image: "https://www.freepik.com/free-photo/vegetables-salad-table_7765484.htm#fromView=search&page=1&position=1&uuid=fd8aa245-ce1d-47d2-a3c2-9d3e9eeffc7f&query=salad" },
-  { id: 6, name: "Greek Salad", category: "Salad", price: 179, image: "https://www.freepik.com/premium-photo/high-angle-view-salad-bowl_125685875.htm#fromView=search&page=1&position=21&uuid=2279857e-6b50-41d6-88d0-0c95b0035f21&query=greek+salad" },
-  { id: 7, name: "Cheese Pasta", category: "Pasta", price: 249, image: "https://www.freepik.com/free-photo/top-view-tasty-cooked-pasta-with-cheese-broccoli-light-gray-background-photo-color-dough-dish-meal-food-green-italy_23121261.htm#fromView=search&page=1&position=18&uuid=e2be70d8-4eff-4b01-8089-32db619f40ec&query=cheese+pasta" },
-  { id: 8, name: "Spaghetti Bolognese", category: "Pasta", price: 299, image: "https://images.unsplash.com/photo-1622973536968-3ead9e780960?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8U3BhZ2hldHRpJTIwQm9sb2duZXNlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" },
-  { id: 9, name: "Chicken Pasta", category: "Pasta", price: 329, image: "https://www.freepik.com/premium-ai-image/penne-pasta-with-chicken-fresh-tomato-sauce-wooden-table_311627778.htm#fromView=search&page=2&position=29&uuid=f9693b6c-cee1-48db-98ee-1ce237b7f004&query=chicken+pasta" },
-  { id: 10, name: "Chicken Biriyani", category: "Indian", price: 399, image: "https://www.freepik.com/premium-ai-image/super-delicious-beef-biryani-image_325970213.htm#fromView=search&page=1&position=11&uuid=7f29e827-624b-4698-8ca2-680ad36f4a1c&query=biriyani" },
-  { id: 11, name: "Indian Dosa", category: "Indian", price: 159, image: "https://www.freepik.com/free-photo/delicious-indian-dosa-arrangement_17876188.htm#fromView=search&page=1&position=12&uuid=a3bf8df7-7a5e-4fa2-9827-62763919e247&query=poratta" },
-  { id: 12, name: "Chicken Shawarma", category: "Middle Eastern", price: 249, image: "https://www.freepik.com/premium-ai-image/delicious-shawarma-black-plate-with-fast-food-photography-style-dark-background_351078660.htm#fromView=search&page=1&position=17&uuid=13e55d8d-2891-4179-9c4c-59fa1b2cc967&query=shawarma" },
-  { id: 13, name: "Beef Shawarma", category: "Middle Eastern", price: 349, image: "https://www.freepik.com/free-ai-image/view-delicious-shawarma-dish_317084431.htm#fromView=search&page=1&position=1&uuid=fb38e4ca-3d3b-407b-8057-bc2359ec09d4&query=beef+shawarma" },
-  { id: 14, name: "Brownie", category: "Dessert", price: 199, image: "https://www.freepik.com/free-photo/high-angle-cooling-rack-with-brownies-kettle_8621582.htm#fromView=search&page=1&position=17&uuid=575701b7-772b-4984-a5a7-a751967f85ef&query=brownies" },
-  { id: 15, name: "Chocolate Cake", category: "Dessert", price: 499, image: "https://www.freepik.com/free-photo/high-angle-delicious-chocolate-cake-concept_11383535.htm#fromView=search&page=1&position=4&uuid=37429298-d346-4ad5-a30c-659cb431b574&query=cakes" },
-
+  { 
+    id: 1, 
+    name: "Salami Pizza", 
+    category: "Pizza", 
+    price: 279, 
+    image: "https://media.istockphoto.com/id/187248625/photo/pepperoni-pizza.webp?a=1&b=1&s=612x612&w=0&k=20&c=clncU414Y_vfH-OoUqiwy5AnZRwBpeSehVqJkD9SvKU="
+  },
+  { 
+    id: 2, 
+    name: "Cheesy Pizza", 
+    category: "Pizza", 
+    price: 299, 
+    image: "https://images.unsplash.com/photo-1520201163981-8cc95007dd2a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Q2hlZXN5JTIwUGl6emF8ZW58MHx8MHx8fDA%3D"
+  },
+  { 
+    id: 3, 
+    name: "Hamburger Burger", 
+    category: "Burger", 
+    price: 169, 
+    image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&q=80&w=600"
+  },
+  { 
+    id: 4, 
+    name: "Triple Cheeseburger", 
+    category: "Burger", 
+    price: 229, 
+    image: "https://images.unsplash.com/photo-1619708976768-50451a0b3c86?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8VHJpcGxlJTIwQ2hlZXNlYnVyZ2VyfGVufDB8fDB8fHww"
+  },
+  { 
+    id: 5, 
+    name: "Vegetable Salad", 
+    category: "Salad", 
+    price: 199, 
+    image: "https://images.unsplash.com/photo-1677653805080-59c57727c84e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8VmVnZXRhYmxlJTIwU2FsYWR8ZW58MHx8MHx8fDA%3D"
+  },
+  { 
+    id: 6, 
+    name: "Greek Salad", 
+    category: "Salad", 
+    price: 179, 
+    image: "https://images.unsplash.com/photo-1599021419847-d8a7a6aba5b4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z3JlZWslMjBzYWxhZHxlbnwwfHwwfHx8MA%3D%3D"
+  },
+  { 
+    id: 7, 
+    name: "Cheese Pasta", 
+    category: "Pasta", 
+    price: 249, 
+    image: "https://images.unsplash.com/photo-1587740908075-9e245070dfaa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2hlZXNlJTIwcGFzdGF8ZW58MHx8MHx8fDA%3D"
+  },
+  { 
+    id: 8, 
+    name: "Spaghetti Bolognese", 
+    category: "Pasta", 
+    price: 299, 
+    image: "https://images.unsplash.com/photo-1622973536968-3ead9e780960?auto=format&q=80&w=600"
+  },
+  { 
+    id: 9, 
+    name: "Chicken Pasta", 
+    category: "Pasta", 
+    price: 329, 
+    image: "https://images.unsplash.com/photo-1716483531797-40a077d0638e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2hpY2tlbiUyMHBhc3RhfGVufDB8fDB8fHww"
+  },
+  { 
+    id: 10, 
+    name: "Chicken Biriyani", 
+    category: "Indian", 
+    price: 399, 
+    image: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hpY2tlbiUyMGJpcml5YW5pfGVufDB8fDB8fHww"
+  },
+  { 
+    id: 11, 
+    name: "Indian Dosa", 
+    category: "Indian", 
+    price: 159, 
+    image: "https://images.unsplash.com/photo-1743517894265-c86ab035adef?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aW5kaWFuJTIwZG9zYXxlbnwwfHwwfHx8MA%3D%3D"
+  },
+  { 
+    id: 12, 
+    name: "Chicken Shawarma", 
+    category: "Middle Eastern", 
+    price: 249, 
+    image: "https://media.istockphoto.com/id/171579564/photo/chicken-souvlaki-wrap.webp?a=1&b=1&s=612x612&w=0&k=20&c=PClOgCTeIi8F77XbDK3B5iWVcJo5Pw9Nt7vp-CgpC-w="
+  },
+  { 
+    id: 13, 
+    name: "Beef Shawarma", 
+    category: "Middle Eastern", 
+    price: 349, 
+    image: "https://images.unsplash.com/photo-1719282431723-9d0f4370d4bc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGJlZWYlMjBzaGF3YXJtYSUyMHJvbGx8ZW58MHx8MHx8fDA%3D"
+  },
+  { 
+    id: 14, 
+    name: "Brownie", 
+    category: "Dessert", 
+    price: 199, 
+    image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YnJvd25pZXxlbnwwfHwwfHx8MA%3D%3D"
+  },
+  { 
+    id: 15, 
+    name: "Chocolate Cake", 
+    category: "Dessert", 
+    price: 499, 
+    image: "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hvY29sYXRlJTIwY2FrZXxlbnwwfHwwfHx8MA%3D%3D"
+  }
 ];
