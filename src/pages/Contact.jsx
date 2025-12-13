@@ -51,7 +51,7 @@ export default function Contact() {
                 type="email"
                 placeholder="Your Email"
                 className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 
-                bg-white dark:bg-gray-800 text-gray-200
+                bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200
                 focus:outline-none focus:ring-2 focus:ring-orange-400"
               />
 
@@ -59,7 +59,7 @@ export default function Contact() {
                 rows="4"
                 placeholder="Your Message"
                 className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-600 
-                bg-white dark:bg-gray-800 text-gray-200
+                bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200
                 focus:outline-none focus:ring-2 focus:ring-orange-400"
               ></textarea>
 
